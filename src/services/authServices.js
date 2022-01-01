@@ -3,7 +3,13 @@ import jwtDecode from "jwt-decode";
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export function login(data) {
-  return axios.post(`${apiUrl}/login`, data);
+  return fetch(`${apiUrl}/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 }
 
 export function getCurrentUser() {
